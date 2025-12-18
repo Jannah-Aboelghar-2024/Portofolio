@@ -1,0 +1,1227 @@
+:root {
+    /* Color Palette - Sage & Forest */
+    --primary: #2E7D32;
+    /* Forest Green */
+    --primary-dark: #1B5E20;
+    /* Deep Green */
+    --secondary: #81C784;
+    /* Sage Light */
+    --accent: #A5D6A7;
+    /* Very Light Sage */
+    --text-main: #263238;
+    /* Dark Slate */
+    --text-muted: #546E7A;
+    /* Muted Slate */
+    --bg-white: #FFFFFF;
+    --bg-light: #F1F8E9;
+    /* Tinted Background */
+
+    /* Spacing & Layout */
+    --container-width: 1100px;
+    --header-height: 70px;
+    --radius: 8px;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+    /* Soft floating shadow */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-main);
+    background-color: var(--bg-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Merriweather', serif;
+    color: var(--primary-dark);
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.8rem;
+    border-radius: 4px;
+    /* Professional squared feel */
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn-outline {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    margin-left: 1rem;
+}
+
+.btn-outline:hover {
+    background-color: var(--primary);
+    color: white;
+}
+
+/* Layout Utilities */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.section {
+    padding: 5rem 0;
+}
+
+.bg-light-green {
+    background-color: var(--bg-light);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--primary);
+    margin: 10px auto 0;
+}
+
+/* Intro text centering - FIXED */
+.section-intro {
+    text-align: center;
+    max-width: 600px;
+    margin: -2rem auto 3rem;
+    /* Spaced out nicely */
+    font-size: 1.15rem;
+    color: var(--text-muted);
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--text-main);
+    margin: 5px 0;
+    transition: 0.3s;
+}
+
+/* Hero Section */
+.hero {
+    padding-top: 140px;
+    padding-bottom: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    /* Text wider than image */
+    align-items: center;
+    gap: 4rem;
+}
+
+.eyebrow {
+    color: var(--primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero-tagline {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    max-width: 90%;
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+}
+
+.img-wrapper {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 8px solid white;
+    box-shadow: var(--shadow-md);
+}
+
+.img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+/* About Me */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.about-bio p {
+    font-size: 1.05rem;
+}
+
+.highlight-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.highlight-card:hover {
+    transform: translateY(-3px);
+}
+
+.highlight-card i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.highlight-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+}
+
+.highlight-card p {
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+
+/* ===========================
+   SKILLS TREE (CSS MAGIC) 
+   =========================== */
+.skills-tree-wrapper {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    margin-top: 1rem;
+}
+
+.tree-container {
+    position: relative;
+    width: 900px;
+    height: 100%;
+    margin: 0 auto;
+}
+
+/* -- Trunk -- */
+.tree-trunk {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 120px;
+    /* Trunk base height */
+    background: transparent;
+    z-index: 2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+/* The vertical line */
+.tree-trunk::before {
+    content: '';
+    position: absolute;
+    bottom: 50px;
+    /* Space for label */
+    width: 6px;
+    height: 100%;
+    background-color: var(--text-muted);
+    border-radius: 4px;
+    z-index: -1;
+    transition: background-color 0.3s;
+}
+
+.trunk-label {
+    background: var(--text-main);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    box-shadow: var(--shadow-md);
+    white-space: nowrap;
+    z-index: 3;
+}
+
+/* -- Branches -- */
+.branch {
+    position: absolute;
+    bottom: 120px;
+    /* Starts at trunk top */
+    z-index: 1;
+    transition: opacity 0.3s;
+}
+
+/* Branch Logic */
+/* Center goes UP */
+.branch-center {
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100px;
+    width: 4px;
+    background-color: #CFD8D2;
+    /* Muted Green-Grey */
+    transition: background-color 0.3s;
+}
+
+/* Left goes UP and LEFT (Quarter Circle) */
+.branch-left {
+    right: 50%;
+    width: 320px;
+    /* Distance out */
+    height: 120px;
+    /* Curve height */
+    border-bottom: 4px solid #CFD8D2;
+    border-left: 4px solid #CFD8D2;
+    border-bottom-left-radius: 120px;
+    /* The Curve */
+    margin-right: 2px;
+    /* Offset from center */
+    transition: border-color 0.3s;
+}
+
+/* Right goes UP and RIGHT */
+.branch-right {
+    left: 50%;
+    width: 320px;
+    height: 120px;
+    border-bottom: 4px solid #CFD8D2;
+    border-right: 4px solid #CFD8D2;
+    border-bottom-right-radius: 120px;
+    margin-left: 2px;
+    transition: border-color 0.3s;
+}
+
+/* -- Labels at ends of branches -- */
+.branch-label {
+    position: absolute;
+    background: white;
+    color: var(--text-main);
+    padding: 8px 18px;
+    border: 1px solid #EEE;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: var(--shadow-sm);
+    white-space: nowrap;
+    z-index: 5;
+}
+
+/* Label Positions */
+.branch-center .branch-label {
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.branch-left .branch-label {
+    top: -10px;
+    left: -10px;
+    transform: translate(-50%, -50%);
+}
+
+.branch-right .branch-label {
+    top: -10px;
+    right: -10px;
+    transform: translate(50%, -50%);
+}
+
+
+/* -- Leaves (The skills) -- */
+/* -- Leaves (The skills) -- */
+/* 
+   FIXED POSITIONING: 
+   Uses calc(100% + buffer) to maintain safe gap regardless of screen wrapping 
+*/
+.leaves-container {
+    position: absolute;
+    width: 260px;
+    /* Slight increase for breathing room */
+    display: flex;
+    flex-direction: column-reverse;
+    /* Stacks upwards */
+    align-items: center;
+    gap: 12px;
+    /* Increased gap to prevent overlap on scale */
+    z-index: 4;
+}
+
+/* Positions - Guaranteed Clearance */
+.branch-left .leaves-container {
+    bottom: calc(100% + 40px);
+    left: -130px;
+}
+
+.branch-right .leaves-container {
+    bottom: calc(100% + 40px);
+    right: -130px;
+}
+
+.branch-center .leaves-container {
+    bottom: calc(100% + 50px);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.leaf {
+    display: block;
+    background: rgba(255, 255, 255, 0.65);
+    /* More translucent for glass */
+    backdrop-filter: blur(12px);
+    /* Stronger Blur */
+    -webkit-backdrop-filter: blur(12px);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    /* Softer, deeper shadow */
+    width: fit-content;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    animation: float 5s ease-in-out infinite;
+    cursor: pointer;
+}
+
+/* Strategic Skills Highlight - Removed per request */
+
+/* Stagger animations */
+.leaf:nth-child(even) {
+    animation-duration: 6s;
+    animation-delay: 0.5s;
+}
+
+.leaf:nth-child(odd) {
+    animation-duration: 7s;
+    animation-delay: 0s;
+}
+
+.leaf:hover {
+    background: white;
+    color: var(--primary);
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    z-index: 30;
+    border-color: var(--primary);
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+
+/* -- Interaction Classes (Toggled by JS) -- */
+/* Active path coloring with GLOW */
+.tree-trunk.active::before {
+    background-color: var(--primary);
+    box-shadow: 0 0 15px rgba(46, 125, 50, 0.6);
+    /* Green Glow */
+}
+
+.branch-center.active {
+    background-color: var(--primary);
+    box-shadow: 0 0 15px rgba(46, 125, 50, 0.6);
+}
+
+/* For curved branches, drop-shadow filter works best */
+.branch-left.active {
+    border-color: var(--primary);
+    filter: drop-shadow(0 0 8px rgba(46, 125, 50, 0.5));
+}
+
+.branch-right.active {
+    border-color: var(--primary);
+    filter: drop-shadow(0 0 8px rgba(46, 125, 50, 0.5));
+}
+
+.branch.active {
+    z-index: 10;
+    opacity: 1;
+}
+
+.branch.dimmed {
+    opacity: 0.2;
+    /* Stronger dimming effect */
+    filter: blur(2px);
+    /* Blur out non-active items */
+}
+
+/* Root Anchor Emphasize */
+.trunk-label {
+    background: var(--text-main);
+    color: white;
+    padding: 12px 24px;
+    /* Larger */
+    border-radius: 6px;
+    font-weight: 800;
+    /* Bolder */
+    font-size: 1.05rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    /* Heavy Anchor Shadow */
+    white-space: nowrap;
+    z-index: 3;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Focus effect */
+
+
+/* Mobile Skills Fallback */
+.skills-mobile-grid {
+    display: none;
+}
+
+
+/* Experience Timeline */
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: #E0E0E0;
+}
+
+.timeline-item {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 3rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    background: var(--primary);
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 1px var(--primary);
+}
+
+.timeline-date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.timeline-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+}
+
+.timeline-content h4 {
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+
+/* Projects (Glassmorphism Cards) */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: var(--glass-border);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    /* Minimal initial shadow */
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(46, 125, 50, 0.15);
+    /* Green glow */
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.project-badge {
+    background: var(--bg-light);
+    color: var(--primary-dark);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.project-year {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.project-card h3 {
+    font-size: 1.25rem;
+    font-family: 'Merriweather', serif;
+    margin-bottom: 0.5rem;
+}
+
+.project-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: auto;
+}
+
+/* Pushes tags down */
+
+.card-tags {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.card-tags span {
+    font-size: 0.7rem;
+    border: 1px solid #EEE;
+    padding: 3px 8px;
+    border-radius: 12px;
+    color: var(--text-muted);
+}
+
+/* Footer */
+.footer {
+    background: var(--text-main);
+    color: white;
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.footer h2 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.footer p {
+    color: #B0BEC5;
+    margin-bottom: 2rem;
+}
+
+.footer a {
+    color: var(--secondary);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.social-links a {
+    font-size: 1.5rem;
+    color: white;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    opacity: 1;
+    color: var(--secondary);
+}
+
+.copyright {
+    font-size: 0.8rem;
+    opacity: 0.5;
+    margin: 0;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 900px) {
+
+    /* Hide Fancy Tree, Show Mobile Grid */
+    .skills-tree-wrapper {
+        display: none;
+    }
+
+    .skills-mobile-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-image {
+        order: -1;
+        margin-bottom: 2rem;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: var(--header-height);
+        right: -100%;
+        background: white;
+        height: calc(100vh - var(--header-height));
+        width: 100%;
+        flex-direction: column;
+        justify-content: center;
+        transition: 0.3s;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+/* Mobile Skills Styling */
+.mobile-skill-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    border-left: 4px solid var(--primary);
+}
+
+.mobile-skill-card h3 {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.mobile-skill-card ul li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #EEE;
+    font-size: 0.95rem;
+}
+
+/* ... previous styles ... */
+
+/* ===========================
+   ACCORDION INTERACTION (New)
+   =========================== */
+
+/* Generic Accordion Trigger */
+.accordion-trigger {
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* Align with top for multi-line */
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    color: inherit;
+    outline: none;
+}
+
+.accordion-trigger:focus-visible {
+    outline: 2px dashed var(--primary);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+.accordion-icon {
+    font-size: 1.5rem;
+    color: var(--primary);
+    font-weight: 300;
+    line-height: 1;
+    margin-left: 1rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+    flex-shrink: 0;
+    /* Don't squash icon */
+}
+
+/* Expanded State for Icon */
+.accordion-trigger[aria-expanded="true"] .accordion-icon {
+    transform: rotate(45deg);
+    /* Turns + into x */
+    color: var(--primary-dark);
+}
+
+/* Hidden Content Wrapper */
+.accordion-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    /* Fade out */
+}
+
+.accordion-content[hidden] {
+    display: none;
+    /* Fallback */
+}
+
+/* Specific overwrite for JS active state if we toggle class instead of just attribute, 
+   but we'll use attribute + grid-template-rows strategy */
+.accordion-content.is-open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.content-inner {
+    overflow: hidden;
+    padding-top: 1rem;
+    /* Space between header and text */
+}
+
+/* --- Experience Timeline Specifics --- */
+.timeline-item .accordion-trigger {
+    padding-left: 0;
+    /* Dot matches :before */
+    align-items: center;
+}
+
+.trigger-header {
+    flex-grow: 1;
+}
+
+.header-titles h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.2rem;
+    color: var(--primary-dark);
+}
+
+.header-titles h4 {
+    font-size: 1rem;
+    color: var(--primary);
+    margin-bottom: 0px;
+    /* Reduced margin in header */
+    font-weight: 500;
+}
+
+/* Ensure padding matches old timeline-content */
+.timeline-item .accordion-content .content-inner {
+    padding-top: 0.5rem;
+    color: var(--text-muted);
+}
+
+
+
+/* ===========================
+   PROJECT MODAL OVERLAY
+   =========================== */
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-wrapper {
+    background: white;
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    outline: none;
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-overlay.is-active .modal-wrapper {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    color: var(--text-muted);
+    cursor: pointer;
+    z-index: 10;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+    color: var(--primary-dark);
+    outline: none;
+}
+
+.modal-content {
+    padding: 2.5rem;
+}
+
+/* Modal Internal Typography matches Card but larger */
+.modal-content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Merriweather', serif;
+    color: var(--text-dark);
+}
+
+.modal-header-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    align-items: center;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.modal-content p {
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+
+.modal-content .card-tags {
+    margin-top: 2rem;
+    justify-content: flex-start;
+}
+
+/* Focus Management */
+.project-card:focus-visible {
+    outline: 2px dashed var(--primary);
+    outline-offset: 4px;
+}
+
+/* Card Visual Indicator */
+.card-indicator {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 1rem;
+    color: var(--text-muted);
+    opacity: 0.6;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+    /* Let clicks pass through to card */
+}
+
+.project-card:hover .card-indicator {
+    opacity: 1;
+    color: var(--primary);
+    transform: scale(1.1);
+}
+
+.project-card {
+    cursor: pointer;
+    position: relative;
+    /* Ensure absolute positioning works */
+}/ *   C e r t i f i c a t e s   S e c t i o n   * /  
+ . c e r t i f i c a t e s - g r i d   {  
+         d i s p l a y :   g r i d ;  
+         g r i d - t e m p l a t e - c o l u m n s :   r e p e a t ( a u t o - f i t ,   m i n m a x ( 3 0 0 p x ,   1 f r ) ) ;  
+         g a p :   2 r e m ;  
+         p a d d i n g - b o t t o m :   2 r e m ;  
+ }  
+  
+ . c e r t i f i c a t e - c a r d   {  
+         b a c k g r o u n d :   w h i t e ;  
+         p a d d i n g :   2 r e m ;  
+         b o r d e r - r a d i u s :   v a r ( - - r a d i u s ) ;  
+         b o x - s h a d o w :   v a r ( - - s h a d o w - s m ) ;  
+         d i s p l a y :   f l e x ;  
+         a l i g n - i t e m s :   c e n t e r ;  
+         g a p :   1 . 5 r e m ;  
+         t r a n s i t i o n :   t r a n s f o r m   0 . 3 s ,   b o x - s h a d o w   0 . 3 s ;  
+         b o r d e r :   1 p x   s o l i d   r g b a ( 0 ,   0 ,   0 ,   0 . 0 3 ) ;  
+ }  
+  
+ . c e r t i f i c a t e - c a r d : h o v e r   {  
+         t r a n s f o r m :   t r a n s l a t e Y ( - 5 p x ) ;  
+         b o x - s h a d o w :   v a r ( - - s h a d o w - m d ) ;  
+ }  
+  
+ . c e r t - i c o n   {  
+         b a c k g r o u n d :   v a r ( - - b g - l i g h t ) ;  
+         w i d t h :   6 0 p x ;  
+         h e i g h t :   6 0 p x ;  
+         b o r d e r - r a d i u s :   5 0 % ;  
+         d i s p l a y :   f l e x ;  
+         a l i g n - i t e m s :   c e n t e r ;  
+         j u s t i f y - c o n t e n t :   c e n t e r ;  
+         f l e x - s h r i n k :   0 ;  
+ }  
+  
+ . c e r t - i c o n   i   {  
+         f o n t - s i z e :   1 . 5 r e m ;  
+         c o l o r :   v a r ( - - p r i m a r y ) ;  
+ }  
+  
+ . c e r t - i n f o   {  
+         f l e x - g r o w :   1 ;  
+ }  
+  
+ . c e r t - i n f o   h 3   {  
+         f o n t - s i z e :   1 . 1 r e m ;  
+         m a r g i n - b o t t o m :   0 . 2 5 r e m ;  
+ }  
+  
+ . c e r t - i n s t i t u t i o n   {  
+         f o n t - s i z e :   0 . 9 r e m ;  
+         c o l o r :   v a r ( - - t e x t - m u t e d ) ;  
+         m a r g i n - b o t t o m :   0 . 2 5 r e m ;  
+ }  
+  
+ . c e r t - y e a r   {  
+         f o n t - s i z e :   0 . 8 5 r e m ;  
+         c o l o r :   v a r ( - - p r i m a r y ) ;  
+         f o n t - w e i g h t :   5 0 0 ;  
+ }  
+  
+ . b t n - v i e w - c e r t   {  
+         p a d d i n g :   0 . 5 r e m   1 r e m ;  
+         b o r d e r :   1 p x   s o l i d   v a r ( - - p r i m a r y ) ;  
+         c o l o r :   v a r ( - - p r i m a r y ) ;  
+         b o r d e r - r a d i u s :   4 p x ;  
+         f o n t - s i z e :   0 . 8 5 r e m ;  
+         f o n t - w e i g h t :   5 0 0 ;  
+         w h i t e - s p a c e :   n o w r a p ;  
+         t r a n s i t i o n :   a l l   0 . 3 s ;  
+ }  
+  
+ . b t n - v i e w - c e r t : h o v e r   {  
+         b a c k g r o u n d :   v a r ( - - p r i m a r y ) ;  
+         c o l o r :   w h i t e ;  
+ }  
+  
+ / *   R e s p o n s i v e   a d j u s t m e n t   f o r   c e r t i f i c a t e s   * /  
+ @ m e d i a   ( m a x - w i d t h :   6 0 0 p x )   {  
+         . c e r t i f i c a t e - c a r d   {  
+                 f l e x - d i r e c t i o n :   c o l u m n ;  
+                 t e x t - a l i g n :   c e n t e r ;  
+                 p a d d i n g :   1 . 5 r e m ;  
+         }  
+  
+         . b t n - v i e w - c e r t   {  
+                 w i d t h :   1 0 0 % ;  
+                 t e x t - a l i g n :   c e n t e r ;  
+         }  
+ }  
+ / *   D e v e l o p e r   C r e d i t   * /  
+ . d e v e l o p e r - c r e d i t   {  
+         m a r g i n - t o p :   1 . 5 r e m ;  
+         f o n t - s i z e :   0 . 7 5 r e m ;  
+         c o l o r :   r g b a ( 2 5 5 ,   2 5 5 ,   2 5 5 ,   0 . 4 ) ;  
+         t e x t - a l i g n :   c e n t e r ;  
+         f o n t - w e i g h t :   3 0 0 ;  
+ }  
+  
+ . d e v e l o p e r - c r e d i t   p   {  
+         m a r g i n :   0 ;  
+         c o l o r :   i n h e r i t ;  
+ }  
+  
+ . d e v e l o p e r - c r e d i t   a   {  
+         c o l o r :   i n h e r i t ;  
+         t e x t - d e c o r a t i o n :   n o n e ;  
+         t r a n s i t i o n :   o p a c i t y   0 . 3 s ,   b o r d e r - b o t t o m   0 . 3 s ;  
+         b o r d e r - b o t t o m :   1 p x   d o t t e d   t r a n s p a r e n t ;  
+ }  
+  
+ . d e v e l o p e r - c r e d i t   a : h o v e r   {  
+         o p a c i t y :   0 . 9 ;  
+         b o r d e r - b o t t o m - c o l o r :   r g b a ( 2 5 5 ,   2 5 5 ,   2 5 5 ,   0 . 6 ) ;  
+ }  
+ 

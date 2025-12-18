@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio of Jannah Aboelghar | Environmental Consultant specializing in Air Quality, Dust Consultancy, and Ecology.">
+    <title>Jannah Aboelghar | Environmental Consultant</title>
+
+    <!-- Google Fonts: Inter (UI) & Merriweather (Headings) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Merriweather:ital,wght@0,300;0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Ensure content is visible if JS is disabled -->
+    <noscript>
+        <style>
+            .accordion-content[hidden],
+            .project-details[hidden] {
+                display: block !important;
+                opacity: 1 !important;
+                grid-template-rows: 1fr !important;
+                margin-top: 1rem;
+            }
+
+            .accordion-icon {
+                display: none;
+            }
+        </style>
+    </noscript>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">Jannah Aboelghar</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="hamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="eyebrow">Graduate Environmental Professional</span>
+                <h1>Jannah Aboelghar</h1>
+                <p class="hero-tagline">Motivated to build a career in <strong>Enviromental Consultancy</strong>.
+                    Bringing scientific rigour, GIS expertise, and ecological experience to
+                    environmental challenges.</p>
+                <div class="hero-buttons">
+                    <a href="assets/pdf/Jannah_Aboelghar_CV.pdf" target="_blank" class="btn btn-primary">View CV</a>
+                    <a href="assets/pdf/Jannah_Aboelghar_CV.pdf" download class="btn btn-outline">Download CV</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="img-wrapper">
+                    <img src="assets/profile.jpg" alt="Jannah Aboelghar" onerror="this.src='placeholder_profile.jpg'">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-light-green">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-grid">
+                <div class="about-bio">
+                    <p>I am a Graduate Environmental Professional with a <strong>BSc (Hons) in Ecology and
+                            Conservation</strong> and a strong technical foundation in spatial data processing and
+                        environmental assessment.</p>
+                    <p>Having worked with organizations like <strong>WWF</strong> and specialized geospatial
+                        consultancies, I have honed my skills in technical reporting, stakeholder engagement, and GIS
+                        analysis. My approach is defined by resilience, adaptability, and a commitment to high-quality
+                        delivery.</p>
+
+                </div>
+                <div class="about-highlights">
+                    <div class="highlight-card">
+                        <i class="fa-solid fa-wind"></i>
+                        <h3>Ecology</h3>
+                        <p>Focus on consultancy & monitoring</p>
+                    </div>
+                    <div class="highlight-card">
+                        <i class="fa-solid fa-certificate"></i>
+                        <h3>CIEEM Member</h3>
+                        <p>Member (2025) - Working towards Associate</p>
+                    </div>
+                    <div class="highlight-card">
+                        <i class="fa-solid fa-map"></i>
+                        <h3>GIS & Data</h3>
+                        <p>QGIS, ArcGIS Pro, & Spatial Analysis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates & Memberships Section -->
+    <section id="certificates" class="section">
+        <div class="container">
+            <h2 class="section-title">Certificates & Memberships</h2>
+            <div class="certificates-grid">
+
+                <!-- Degree Certificate -->
+                <article class="certificate-card">
+                    <div class="cert-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div class="cert-info">
+                        <h3>BSc (Hons) Ecology & Conservation</h3>
+                        <p class="cert-institution">Manchester Metropolitan University</p>
+                        <p class="cert-year">2024</p>
+                    </div>
+                    <!-- Linked to the actual certificate file -->
+                    <a href="assets/pdf/Jannah_Aboelghar_BSc_Ecology_Conservation_Certificate.pdf" target="_blank"
+                        class="btn-sm btn-view-cert" aria-label="View Certificate">View Certificate</a>
+                </article>
+
+                <!-- Membership -->
+                <article class="certificate-card">
+                    <div class="cert-icon">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                    <div class="cert-info">
+                        <h3>CIEEM Member</h3>
+                        <p class="cert-institution">Chartered Institute of Ecology and Environmental Management</p>
+                        <p class="cert-year">2025</p>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Tree Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">Technical Expertise</h2>
+            <p class="section-intro">Visualizing my multidisciplinary skillset</p>
+
+            <!-- Desktop Tree Visualization -->
+            <div class="skills-tree-wrapper">
+                <div class="tree-container">
+
+                    <!-- The Trunk (Root) -->
+                    <div class="tree-trunk">
+                        <div class="trunk-label">Environmental Consultancy</div>
+                    </div>
+
+                    <!-- Branch 1: Ecology & Environmental -->
+                    <div class="branch branch-left">
+                        <div class="branch-label">Ecology & Environmental</div>
+                        <div class="leaves-container">
+                            <span class="leaf">Air Quality & Dust</span>
+                            <span class="leaf">Habitat Management</span>
+                            <span class="leaf">Biodiversity Surveys</span>
+                            <span class="leaf">BNG Principles</span>
+                            <span class="leaf">Species Monitoring</span>
+                        </div>
+                    </div>
+
+                    <!-- Branch 2: GIS & Analysis -->
+                    <div class="branch branch-center">
+                        <div class="branch-label">GIS & Analysis</div>
+                        <div class="leaves-container">
+                            <span class="leaf">QGIS & ArcGIS Pro</span>
+                            <span class="leaf">Sustainability Data</span>
+                            <span class="leaf">Google Earth Engine</span>
+                            <span class="leaf">Remote Sensing</span>
+                            <span class="leaf">Spatial Data Handling</span>
+                        </div>
+                    </div>
+
+                    <!-- Branch 3: Professional -->
+                    <div class="branch branch-right">
+                        <div class="branch-label">Professional Skills</div>
+                        <div class="leaves-container">
+                            <span class="leaf">Technical Reporting</span>
+                            <span class="leaf">Stakeholder Engagement</span>
+                            <span class="leaf">Data Interpretation</span>
+                            <span class="leaf">Project Coordination</span>
+                            <span class="leaf">Client Communication</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Mobile Skills Fallback -->
+            <div class="skills-mobile-grid">
+                <div class="mobile-skill-card">
+                    <h3><i class="fa-solid fa-leaf"></i> Ecology & Environmental</h3>
+                    <ul>
+                        <li><strong style="color: var(--primary);">Air Quality & Dust</strong></li>
+                        <li>Habitat Management</li>
+                        <li>Biodiversity Surveys</li>
+                        <li>BNG Principles</li>
+                        <li>Species Monitoring</li>
+                    </ul>
+                </div>
+                <div class="mobile-skill-card">
+                    <h3><i class="fa-solid fa-layer-group"></i> GIS & Analysis</h3>
+                    <ul>
+                        <li>QGIS & ArcGIS Pro</li>
+                        <li><strong style="color: var(--primary);">Sustainability Data</strong></li>
+                        <li>Google Earth Engine</li>
+                        <li>Remote Sensing</li>
+                        <li>Spatial Data Handling</li>
+                    </ul>
+                </div>
+                <div class="mobile-skill-card">
+                    <h3><i class="fa-solid fa-briefcase"></i> Professional Skills</h3>
+                    <ul>
+                        <li>Technical Reporting</li>
+                        <li>Stakeholder Engagement</li>
+                        <li>Data Interpretation</li>
+                        <li>Project Coordination</li>
+                        <li>Client Communication</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section bg-light-green">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+
+                <!-- Experience 1 -->
+                <div class="timeline-item accordion-item">
+                    <button class="accordion-trigger" aria-expanded="false" aria-controls="exp-1">
+                        <div class="trigger-header">
+                            <span class="timeline-date">Jun 2025 – Present</span>
+                            <div class="header-titles">
+                                <h3>Environmental Outreach & Engagement Officer</h3>
+                                <h4>Element Enterprise Ltd. (WWF Projects)</h4>
+                            </div>
+                        </div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="exp-1" class="accordion-content" hidden>
+                        <div class="content-inner">
+                            <p>Delivering public conservation engagement to 100+ people daily. Coordinating team
+                                activities, reporting feedback data to inform strategy, and supporting environmental
+                                messaging development.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="timeline-item accordion-item">
+                    <button class="accordion-trigger" aria-expanded="false" aria-controls="exp-2">
+                        <div class="trigger-header">
+                            <span class="timeline-date">Jan 2025 – Jun 2025</span>
+                            <div class="header-titles">
+                                <h3>Environmental Data & GIS Assistant</h3>
+                                <h4>Mapping Solutions Limited</h4>
+                            </div>
+                        </div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="exp-2" class="accordion-content" hidden>
+                        <div class="content-inner">
+                            <p>Provided GIS support for environmental assessments, produced technical maps (QGIS), and
+                                delivered training. Contributed to proposals securing €539k+ in sales and demonstrated
+                                remote sensing tools.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 3 -->
+                <div class="timeline-item accordion-item">
+                    <button class="accordion-trigger" aria-expanded="false" aria-controls="exp-3">
+                        <div class="trigger-header">
+                            <span class="timeline-date">Nov 2023 – Sep 2024</span>
+                            <div class="header-titles">
+                                <h3>Environmental Communications Assistant</h3>
+                                <h4>Mathurin Hybrid Initiative</h4>
+                            </div>
+                        </div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="exp-3" class="accordion-content" hidden>
+                        <div class="content-inner">
+                            <p>Researched and scripted scientifically accurate environmental video content for large
+                                audiences. Managed end-to-end production within a creative team under tight deadlines.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 4 -->
+                <div class="timeline-item accordion-item">
+                    <button class="accordion-trigger" aria-expanded="false" aria-controls="exp-4">
+                        <div class="trigger-header">
+                            <span class="timeline-date">Oct 2023 – Jul 2024</span>
+                            <div class="header-titles">
+                                <h3>Environmental Awareness Content Producer</h3>
+                                <h4>Fly Live FM</h4>
+                            </div>
+                        </div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="exp-4" class="accordion-content" hidden>
+                        <div class="content-inner">
+                            <p>Produced weekly podcasts on biodiversity. Translated complex scientific literature into
+                                accessible content and interviewed environmental professionals.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Experience 5 -->
+                <div class="timeline-item accordion-item">
+                    <button class="accordion-trigger" aria-expanded="false" aria-controls="exp-5">
+                        <div class="trigger-header">
+                            <span class="timeline-date">Aug 2022 – Sep 2022</span>
+                            <div class="header-titles">
+                                <h3>Ecological Field Assistant</h3>
+                                <h4>GVI Thailand</h4>
+                            </div>
+                        </div>
+                        <span class="accordion-icon" aria-hidden="true">+</span>
+                    </button>
+                    <div id="exp-5" class="accordion-content" hidden>
+                        <div class="content-inner">
+                            <p>Conducted biodiversity surveys (gibbon/elephant), collected long-term ecological data
+                                using standardised protocols, and delivered community environmental education.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects & Additional Experience -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">Projects & Volunteering</h2>
+            <div class="projects-grid">
+
+                <!-- 1. Habitat Management (City of Trees) -->
+                <article class="project-card" tabindex="0">
+                    <i class="fa-solid fa-plus card-indicator" aria-hidden="true"></i>
+                    <div class="card-header">
+                        <span class="project-badge">Conservation</span>
+                        <span class="project-year">Dec 2025 – Present</span>
+                    </div>
+                    <h3>Habitat Management with City of Trees</h3>
+                    <div class="project-details" hidden>
+                        <p>Practical habitat management and understanding of tree establishment in urban environments.
+                            Application of health and safety awareness in outdoor environmental work and collaborative
+                            working with environmental practitioners.</p>
+                        <div class="card-tags">
+                            <span>Habitat Management</span><span>Health & Safety</span><span>Biodiversity</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 2. Stop the Genocide in DRC -->
+                <article class="project-card" tabindex="0">
+                    <i class="fa-solid fa-plus card-indicator" aria-hidden="true"></i>
+                    <div class="card-header">
+                        <span class="project-badge">Media Campaign</span>
+                        <span class="project-year">Nov 2023 – Sep 2024</span>
+                    </div>
+                    <h3>Stop the Genocide in DRC</h3>
+                    <div class="project-details" hidden>
+                        <p>Researched and scripted scientifically accurate content. Managed end-to-end production
+                            including video editing, voiceovers, and fact-checking.</p>
+                        <div class="card-tags">
+                            <span>Video Editing</span><span>Scriptwriting</span><span>Research</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 3. How Can Parrots Speak -->
+                <article class="project-card" tabindex="0">
+                    <i class="fa-solid fa-plus card-indicator" aria-hidden="true"></i>
+                    <div class="card-header">
+                        <span class="project-badge">Podcast</span>
+                        <span class="project-year">Oct 2023 – Jul 2024</span>
+                    </div>
+                    <h3>How Can Parrots Speak</h3>
+                    <div class="project-details" hidden>
+                        <p>Produced weekly podcasts involving scriptwriting, live sound, voice modulation, and public
+                            engagement. Demonstrated proficiency with radio equipment and improvisation.</p>
+                        <div class="card-tags">
+                            <span>Public Engagement</span><span>Audio Production</span><span>Scriptwriting</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 4. NTU Representative -->
+                <article class="project-card" tabindex="0">
+                    <i class="fa-solid fa-plus card-indicator" aria-hidden="true"></i>
+                    <div class="card-header">
+                        <span class="project-badge">Outreach</span>
+                        <span class="project-year">Jan 2023 – Jun 2024</span>
+                    </div>
+                    <h3>NTU Representative Projects</h3>
+                    <div class="project-details" hidden>
+                        <p>Modeled for online content campaigns for NTU and NTIC, gaining insights into visual media and
+                            creative processes while representing the university.</p>
+                        <div class="card-tags">
+                            <span>Modeling</span><span>Camera Skills</span><span>Confidence</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 5. More about Jannah -->
+                <article class="project-card" tabindex="0">
+                    <i class="fa-solid fa-plus card-indicator" aria-hidden="true"></i>
+                    <div class="card-header">
+                        <span class="project-badge">Publication</span>
+                        <span class="project-year">Jun 2023 – Jul 2023</span>
+                    </div>
+                    <h3>More about Jannah</h3>
+                    <div class="project-details" hidden>
+                        <p>Featured in an article written about my experience as a student, highlighting academic and
+                            extracurricular achievements.</p>
+                        <div class="card-tags">
+                            <span>Interview</span><span>Student Experience</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 6. Spain Expedition -->
+                <article class="project-card" tabindex="0">
+                    <i class="fa-solid fa-plus card-indicator" aria-hidden="true"></i>
+                    <div class="card-header">
+                        <span class="project-badge">Expedition</span>
+                        <span class="project-year">Mar 2023 – Apr 2023</span>
+                    </div>
+                    <h3>Spain Expedition</h3>
+                    <div class="project-details" hidden>
+                        <p>Collected wild boar field signs data and employed camera traps for species identification.
+                            Addressed sustainability issues like reclaimed water usage for irrigation.</p>
+                        <div class="card-tags">
+                            <span>Wildlife Conservation</span><span>Survey Skills</span><span>Analysis</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 7. Event Officer -->
+                <article class="project-card" tabindex="0">
+                    <i class="fa-solid fa-plus card-indicator" aria-hidden="true"></i>
+                    <div class="card-header">
+                        <span class="project-badge">Leadership</span>
+                        <span class="project-year">Mar 2022 – Mar 2023</span>
+                    </div>
+                    <h3>Event Officer</h3>
+                    <div class="project-details" hidden>
+                        <p>Committee member for the Egyptian Society (80+ members) at Nottingham Trent University.
+                            Managed event planning and fostered personal relationships.</p>
+                        <div class="card-tags">
+                            <span>Event Planning</span><span>Leadership</span><span>Teamwork</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 8. Community Garden -->
+                <article class="project-card" tabindex="0">
+                    <i class="fa-solid fa-plus card-indicator" aria-hidden="true"></i>
+                    <div class="card-header">
+                        <span class="project-badge">Volunteering</span>
+                        <span class="project-year">May 2021 – Jun 2021</span>
+                    </div>
+                    <h3>Volunteering in Community Garden</h3>
+                    <div class="project-details" hidden>
+                        <p>Managed the garden based on a plan designed to attract greater biodiversity and wildlife,
+                            applying environmental management systems.</p>
+                        <div class="card-tags">
+                            <span>Conservation</span><span>Env. Management</span><span>Teamwork</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 9. Lense -->
+                <article class="project-card" tabindex="0">
+                    <i class="fa-solid fa-plus card-indicator" aria-hidden="true"></i>
+                    <div class="card-header">
+                        <span class="project-badge">Campaign</span>
+                        <span class="project-year">May 2018 – Jul 2018</span>
+                    </div>
+                    <h3>Lense</h3>
+                    <div class="project-details" hidden>
+                        <p>Created an award-winning video campaign raising awareness for teenager issues. Won first rank
+                            in school competition and achieved high engagement on YouTube.</p>
+                        <div class="card-tags">
+                            <span>Content Creation</span><span>Filming</span><span>Social Media</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 10. TEDx AUC -->
+                <article class="project-card" tabindex="0">
+                    <i class="fa-solid fa-plus card-indicator" aria-hidden="true"></i>
+                    <div class="card-header">
+                        <span class="project-badge">Public Speaking</span>
+                        <span class="project-year">Dec 2017 – Feb 2018</span>
+                    </div>
+                    <h3>TEDx AUC Speaker</h3>
+                    <div class="project-details" hidden>
+                        <p>Delivered a speech on maturity and materialism to an audience of 250+. Demonstrated strong
+                            scriptwriting and presentation skills at age 16.</p>
+                        <div class="card-tags">
+                            <span>Public Speaking</span><span>Presentation</span><span>Analysis</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <p>Jannah Aboelghar | <a href="mailto:jannah.aboelghar@gmail.com">jannah.aboelghar@gmail.com</a> | +44
+                7310415026</p>
+            <div class="social-links">
+                <a href="mailto:jannah.aboelghar@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/" target="_blank" aria-label="LinkedIn"><i
+                        class="fa-brands fa-linkedin"></i></a>
+            </div>
+            <p class="copyright">&copy; 2025 Jannah Aboelghar. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Shared Project Modal Overlay -->
+    <div id="project-modal" class="modal-overlay" aria-hidden="true">
+        <div class="modal-wrapper" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-content">
+                <!-- Dynamic Content Will Be Injected Here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
