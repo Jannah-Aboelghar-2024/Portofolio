@@ -1,18 +1,58 @@
-// Jannah Aboelghar - Portfolio JavaScript
-// Optimized for Performance & Accessibility
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Mobile Navigation ---
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const links = document.querySelectorAll('.nav-links a');
+
+    /* -------------------------------------------------------------------------- */
+    /*                          Active Link Highlighting                          */
+    /* -------------------------------------------------------------------------- */
+    const sections = document.querySelectorAll('section, header.hero');
+
+    const observerOptions = {
+        threshold: 0.4,
+        rootMargin: "-10% 0px -10% 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                links.forEach(link => {
+                    link.classList.remove('active');
+                    link.setAttribute('aria-current', 'false');
+                });
+
+                const id = entry.target.getAttribute('id');
+                let activeLink;
+
+                if (id) {
+                    activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
+                } else if (entry.target.classList.contains('hero')) {
+                    // Hero usually maps to the logo or nothing, but lets assumes it maps to 'About' or Home if exists
+                    // Actually, often Hero is just the start.
+                    // The prompt says "First visible section active".
+                    // If hero is active, maybe no link is active, or 'About' if it's the first link.
+                    // Let's leave it blank if no ID match, OR check if there is a specific home link.
+                }
+
+                if (activeLink) {
+                    activeLink.classList.add('active');
+                    activeLink.setAttribute('aria-current', 'page');
+                }
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
 
     if (hamburger) {
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
 
-            // Toggle hamburger animation state
             const spans = hamburger.querySelectorAll('span');
             if (navLinks.classList.contains('active')) {
                 spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
@@ -26,33 +66,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Close menu when clicking link
     links.forEach(link => {
         link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            const spans = hamburger.querySelectorAll('span');
-            if (spans.length === 3) {
-                spans[0].style.transform = 'none';
-                spans[1].style.opacity = '1';
-                spans[2].style.transform = 'none';
-            }
+            setTimeout(() => {
+                navLinks.classList.remove('active');
+                const spans = hamburger.querySelectorAll('span');
+                if (spans.length === 3) {
+                    spans[0].style.transform = 'none';
+                    spans[1].style.opacity = '1';
+                    spans[2].style.transform = 'none';
+                }
+            }, 150);
         });
     });
 
-    // --- Skills Tree Interaction (Desktop) ---
-    // Optimization: Event Delegation on the container instead of multiple listeners
     const treeContainer = document.querySelector('.tree-container');
     const branches = document.querySelectorAll('.branch');
     const trunk = document.querySelector('.tree-trunk');
 
     if (treeContainer && window.innerWidth > 900) {
 
-        // Helper: Activate a specific branch path
         const highlightPath = (targetBranch) => {
-            // 1. Activate Trunk
+
             if (trunk) trunk.classList.add('active');
 
-            // 2. Manage Branches
             branches.forEach(branch => {
                 if (branch === targetBranch) {
                     branch.classList.add('active');
@@ -64,7 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
-        // Helper: Reset Tree to neutral state
         const resetTree = () => {
             if (trunk) trunk.classList.remove('active');
             branches.forEach(b => {
@@ -73,9 +109,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         };
 
-        // Event Delegation: One listener for the whole tree
         treeContainer.addEventListener('mouseover', (e) => {
-            // Check if hovering over a branch or any of its children (leaves/labels)
+
             const branch = e.target.closest('.branch');
 
             if (branch) {
@@ -83,22 +118,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Use mouseout on container to reset, but check if we really left the tree
         treeContainer.addEventListener('mouseout', (e) => {
-            // If the element we are moving TO (relatedTarget) is NOT inside the tree...
+
             if (!treeContainer.contains(e.relatedTarget)) {
                 resetTree();
             }
         });
 
-        // Accessibility: Keyboard focus delegation
         treeContainer.addEventListener('focusin', (e) => {
             const branch = e.target.closest('.branch');
             if (branch) highlightPath(branch);
         });
 
         treeContainer.addEventListener('focusout', (e) => {
-            // Delay slightly to check if focus moved to another element in tree
+
             setTimeout(() => {
                 if (!treeContainer.contains(document.activeElement)) {
                     resetTree();
@@ -107,8 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Accordion Interaction (Experience Only) ---
-    // Note: Projects now use Modals, so we target .timeline-item .accordion-trigger
     const timelineTriggers = document.querySelectorAll('.timeline-item .accordion-trigger');
 
     if (timelineTriggers.length > 0) {
@@ -118,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const content = document.getElementById(contentId);
                 const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
 
-                // 1. Close other timeline accordions
                 timelineTriggers.forEach(otherTrigger => {
                     if (otherTrigger !== trigger) {
                         const otherContent = document.getElementById(otherTrigger.getAttribute('aria-controls'));
@@ -130,7 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
 
-                // 2. Toggle Current
                 if (!isExpanded) {
                     trigger.setAttribute('aria-expanded', 'true');
                     content.removeAttribute('hidden');
@@ -144,7 +173,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Project Modal Interaction (New) ---
     const projectCards = document.querySelectorAll('.project-card');
     const modalOverlay = document.getElementById('project-modal');
     const modalWrapper = modalOverlay ? modalOverlay.querySelector('.modal-wrapper') : null;
@@ -154,17 +182,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (projectCards.length > 0 && modalOverlay) {
 
-        // Open Modal
         const openModal = (card) => {
             lastFocusedElement = document.activeElement;
 
-            // Extract Data
             const title = card.querySelector('h3').textContent;
             const badge = card.querySelector('.project-badge').textContent;
             const year = card.querySelector('.project-year').textContent;
-            const details = card.querySelector('.project-details').innerHTML; // Get hidden content
+            const details = card.querySelector('.project-details').innerHTML;
 
-            // Populate Modal
             modalContent.innerHTML = `
                 <div class="modal-header-meta">
                     <span class="project-badge">${badge}</span>
@@ -174,31 +199,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 ${details}
             `;
 
-            // Show
             modalOverlay.classList.add('is-active');
             modalOverlay.setAttribute('aria-hidden', 'false');
 
-            // Trap Focus
             modalWrapper.focus();
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
         };
 
-        // Close Modal
         const closeModal = () => {
             modalOverlay.classList.remove('is-active');
             modalOverlay.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
 
-            // Return Focus
             if (lastFocusedElement) lastFocusedElement.focus();
         };
 
-        // Event Listeners
         projectCards.forEach(card => {
             card.addEventListener('click', (e) => {
                 openModal(card);
             });
-            // Keyboard Interact (Enter/Space)
+
             card.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -207,7 +227,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Close Events
         modalCloseBtn.addEventListener('click', closeModal);
 
         modalOverlay.addEventListener('click', (e) => {
@@ -220,7 +239,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Focus Trap (Simple)
         modalWrapper.addEventListener('keydown', (e) => {
             if (e.key === 'Tab') {
                 const focusables = modalWrapper.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
@@ -241,5 +259,65 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    const renderProjectLinks = () => {
+        projectCards.forEach(card => {
+            const rawLinks = card.getAttribute('data-links');
+            if (!rawLinks) return;
+
+            try {
+                const links = JSON.parse(rawLinks);
+                if (!Array.isArray(links) || links.length === 0) return;
+
+                const detailsDiv = card.querySelector('.project-details');
+                if (!detailsDiv) return;
+
+                const linksContainer = document.createElement('div');
+                linksContainer.className = 'project-links';
+
+                links.forEach(link => {
+                    const a = document.createElement('a');
+                    a.href = link.url;
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                    a.className = 'link-btn';
+                    a.setAttribute('data-platform', link.platform);
+
+                    let iconClass = 'fa-solid fa-link';
+                    let label = 'View Project';
+
+                    switch (link.platform) {
+                        case 'instagram':
+                            iconClass = 'fa-brands fa-instagram';
+                            label = 'View on Instagram';
+                            break;
+                        case 'youtube':
+                            iconClass = 'fa-brands fa-youtube';
+                            label = 'Watch on YouTube';
+                            break;
+                        case 'article':
+                            iconClass = 'fa-solid fa-newspaper';
+                            label = 'Read Article';
+                            break;
+                        case 'website':
+                            iconClass = 'fa-solid fa-globe';
+                            label = 'Visit Website';
+                            break;
+                    }
+
+                    a.setAttribute('aria-label', label);
+                    a.innerHTML = `<i class="${iconClass}"></i>`;
+                    linksContainer.appendChild(a);
+                });
+
+                detailsDiv.appendChild(linksContainer);
+
+            } catch (e) {
+                console.warn('Invalid JSON in data-links:', rawLinks);
+            }
+        });
+    };
+
+    renderProjectLinks();
 
 });
