@@ -150,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const timelineTriggers = document.querySelectorAll('.timeline-item .accordion-trigger');
 
     if (timelineTriggers.length > 0) {
-        // Use a single event listener with delegation for better performance
+        // Attach event listeners to each accordion trigger
         timelineTriggers.forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const contentId = trigger.getAttribute('aria-controls');
