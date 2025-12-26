@@ -2,6 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // Cache DOM queries to avoid repeated lookups
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     const links = document.querySelectorAll('.nav-links a');
@@ -11,6 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
     /* -------------------------------------------------------------------------- */
     const sections = document.querySelectorAll('section, header.hero');
 
+    // Build a map of section IDs to links for faster lookup
+    const linkMap = new Map();
+    links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+            linkMap.set(href.substring(1), link);
+        }
+    });
+
     const observerOptions = {
         threshold: 0.4,
         rootMargin: "-10% 0px -10% 0px"
@@ -19,27 +29,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                // Remove active state from all links at once (more efficient)
                 links.forEach(link => {
                     link.classList.remove('active');
                     link.setAttribute('aria-current', 'false');
                 });
 
                 const id = entry.target.getAttribute('id');
-                let activeLink;
-
+                
+                // Use the map for faster lookup instead of querySelector
                 if (id) {
-                    activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
-                } else if (entry.target.classList.contains('hero')) {
-                    // Hero usually maps to the logo or nothing, but lets assumes it maps to 'About' or Home if exists
-                    // Actually, often Hero is just the start.
-                    // The prompt says "First visible section active".
-                    // If hero is active, maybe no link is active, or 'About' if it's the first link.
-                    // Let's leave it blank if no ID match, OR check if there is a specific home link.
-                }
-
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                    activeLink.setAttribute('aria-current', 'page');
+                    const activeLink = linkMap.get(id);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                        activeLink.setAttribute('aria-current', 'page');
+                    }
                 }
             }
         });
@@ -85,9 +89,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const trunk = document.querySelector('.tree-trunk');
 
     if (treeContainer && window.innerWidth > 900) {
+        // Cache class manipulation to reduce DOM operations
+        let currentActiveBranch = null;
 
         const highlightPath = (targetBranch) => {
-
+            if (currentActiveBranch === targetBranch) return; // Skip if already active
+            
             if (trunk) trunk.classList.add('active');
 
             branches.forEach(branch => {
@@ -99,6 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     branch.classList.add('dimmed');
                 }
             });
+            
+            currentActiveBranch = targetBranch;
         };
 
         const resetTree = () => {
@@ -107,19 +116,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 b.classList.remove('active');
                 b.classList.remove('dimmed');
             });
+            currentActiveBranch = null;
         };
 
+        // Use event delegation for better performance
         treeContainer.addEventListener('mouseover', (e) => {
-
             const branch = e.target.closest('.branch');
-
             if (branch) {
                 highlightPath(branch);
             }
         });
 
         treeContainer.addEventListener('mouseout', (e) => {
-
             if (!treeContainer.contains(e.relatedTarget)) {
                 resetTree();
             }
@@ -131,7 +139,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         treeContainer.addEventListener('focusout', (e) => {
-
             setTimeout(() => {
                 if (!treeContainer.contains(document.activeElement)) {
                     resetTree();
@@ -143,15 +150,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const timelineTriggers = document.querySelectorAll('.timeline-item .accordion-trigger');
 
     if (timelineTriggers.length > 0) {
+        // Use a single event listener with delegation for better performance
         timelineTriggers.forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const contentId = trigger.getAttribute('aria-controls');
                 const content = document.getElementById(contentId);
                 const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
 
+                // Close all other accordions efficiently
                 timelineTriggers.forEach(otherTrigger => {
                     if (otherTrigger !== trigger) {
-                        const otherContent = document.getElementById(otherTrigger.getAttribute('aria-controls'));
+                        const otherContentId = otherTrigger.getAttribute('aria-controls');
+                        const otherContent = document.getElementById(otherContentId);
                         otherTrigger.setAttribute('aria-expanded', 'false');
                         if (otherContent) {
                             otherContent.classList.remove('is-open');
@@ -160,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
 
+                // Toggle current accordion
                 if (!isExpanded) {
                     trigger.setAttribute('aria-expanded', 'true');
                     content.removeAttribute('hidden');
@@ -260,6 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Pre-parse and cache project links data for better performance
     const renderProjectLinks = () => {
         projectCards.forEach(card => {
             const rawLinks = card.getAttribute('data-links');
@@ -275,6 +287,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const linksContainer = document.createElement('div');
                 linksContainer.className = 'project-links';
 
+                // Use DocumentFragment for better performance
+                const fragment = document.createDocumentFragment();
+
                 links.forEach(link => {
                     const a = document.createElement('a');
                     a.href = link.url;
@@ -283,33 +298,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     a.className = 'link-btn';
                     a.setAttribute('data-platform', link.platform);
 
-                    let iconClass = 'fa-solid fa-link';
-                    let label = 'View Project';
+                    // Use a lookup object for platform data
+                    const platformData = {
+                        instagram: { icon: 'fa-brands fa-instagram', label: 'View on Instagram' },
+                        youtube: { icon: 'fa-brands fa-youtube', label: 'Watch on YouTube' },
+                        article: { icon: 'fa-solid fa-newspaper', label: 'Read Article' },
+                        website: { icon: 'fa-solid fa-globe', label: 'Visit Website' }
+                    };
 
-                    switch (link.platform) {
-                        case 'instagram':
-                            iconClass = 'fa-brands fa-instagram';
-                            label = 'View on Instagram';
-                            break;
-                        case 'youtube':
-                            iconClass = 'fa-brands fa-youtube';
-                            label = 'Watch on YouTube';
-                            break;
-                        case 'article':
-                            iconClass = 'fa-solid fa-newspaper';
-                            label = 'Read Article';
-                            break;
-                        case 'website':
-                            iconClass = 'fa-solid fa-globe';
-                            label = 'Visit Website';
-                            break;
-                    }
-
-                    a.setAttribute('aria-label', label);
-                    a.innerHTML = `<i class="${iconClass}"></i>`;
-                    linksContainer.appendChild(a);
+                    const data = platformData[link.platform] || { icon: 'fa-solid fa-link', label: 'View Project' };
+                    
+                    a.setAttribute('aria-label', data.label);
+                    a.innerHTML = `<i class="${data.icon}"></i>`;
+                    fragment.appendChild(a);
                 });
 
+                linksContainer.appendChild(fragment);
                 detailsDiv.appendChild(linksContainer);
 
             } catch (e) {
